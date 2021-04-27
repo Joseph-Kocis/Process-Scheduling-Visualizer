@@ -45,6 +45,7 @@ struct ProcessView: View {
                     } label: {
                         Image(systemName: "arrow.clockwise")
                     }
+                    .keyboardShortcut("r", modifiers: .command)
                 }
             }
             .sheet(isPresented: $showAddProcessView) {

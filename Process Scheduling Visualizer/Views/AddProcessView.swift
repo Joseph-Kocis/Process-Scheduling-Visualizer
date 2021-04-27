@@ -48,6 +48,7 @@ struct AddProcessView: View {
                 Button("Cancel") {
                     presentationMode.wrappedValue.dismiss()
                 }
+                .keyboardShortcut(.cancelAction)
                 Spacer()
                 Button("Add") {
                     if addProcess() {
@@ -56,6 +57,7 @@ struct AddProcessView: View {
                         showInvalidInputAlert = true
                     }
                 }
+                .keyboardShortcut(.defaultAction)
             }
         }
         .frame(width: 300, height: 200)
