@@ -10,6 +10,7 @@ import SwiftUI
 class ProcessViewModel: ObservableObject {
     @Published var allProcess: [Process] = []
     @Published var selectedAlgorithm: SchedulingAlgorithms = .firstComeFirstServed
+    @Published var scheduledProcesses: [Process] = []
     
     func addProcess(arrivalTime: Int, duration: Int, priority: Int) {
         var newProcess = Process(arrivalTime: arrivalTime, duration: duration, priority: priority)
@@ -22,15 +23,44 @@ class ProcessViewModel: ObservableObject {
     func generate() {
         switch selectedAlgorithm {
             case .firstComeFirstServed:
-                break
+                firstComeFirstServed()
+                calculateStats()
             case .shortestJobFirst:
-                break
+                shortestJobFirst()
+                calculateStats()
             case .roundRobin:
-                break
+                roundRobin()
+                calculateStats()
             case .shortestRemaingTimeFirst:
-                break
+                shortestRemainingTimeFirst()
+                calculateStats()
             case .priority:
-                break
+                priority()
+                calculateStats()
         }
+    }
+    
+    private func firstComeFirstServed() {
+        
+    }
+    
+    private func shortestJobFirst() {
+        
+    }
+    
+    private func roundRobin() {
+        
+    }
+    
+    private func shortestRemainingTimeFirst() {
+        
+    }
+    
+    private func priority() {
+        
+    }
+    
+    private func calculateStats() {
+        
     }
 }

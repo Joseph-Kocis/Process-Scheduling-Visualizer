@@ -16,7 +16,11 @@ struct ProcessView: View {
             Sidebar(processViewModel: processViewModel)
             
             VStack {
-                Text("Select Process")
+                if processViewModel.scheduledProcesses.isEmpty {
+                    Text("Run Scheduling Algorithm")
+                } else {
+                    BarView(processViewModel: processViewModel)
+                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: ToolbarItemPlacement.status) {
@@ -37,7 +41,7 @@ struct ProcessView: View {
                         Image(systemName: "plus")
                     }
                     Button {
-                        
+                        processViewModel.generate()
                     } label: {
                         Image(systemName: "arrow.clockwise")
                     }

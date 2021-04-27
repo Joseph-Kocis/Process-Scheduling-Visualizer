@@ -17,6 +17,7 @@
 		A646877C2637406300FE14CE /* ProcessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A646877B2637406300FE14CE /* ProcessViewModel.swift */; };
 		A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2EC2638987800C65B97 /* AddProcessView.swift */; };
 		A6F9D2F42638A7DA00C65B97 /* SchedulingAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */; };
+		A6F9D2F82638B0C500C65B97 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F72638B0C500C65B97 /* BarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		A646877B2637406300FE14CE /* ProcessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewModel.swift; sourceTree = "<group>"; };
 		A6F9D2EC2638987800C65B97 /* AddProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcessView.swift; sourceTree = "<group>"; };
 		A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingAlgorithms.swift; sourceTree = "<group>"; };
+		A6F9D2F72638B0C500C65B97 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,11 +92,20 @@
 		A646877E2637407F00FE14CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A616B28A2617C27D005F2A45 /* ProcessView.swift */,
+				A6F9D2F62638B0BB00C65B97 /* Process View */,
 				A64687712637402D00FE14CE /* Sidebar.swift */,
 				A6F9D2EC2638987800C65B97 /* AddProcessView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A6F9D2F62638B0BB00C65B97 /* Process View */ = {
+			isa = PBXGroup;
+			children = (
+				A616B28A2617C27D005F2A45 /* ProcessView.swift */,
+				A6F9D2F72638B0C500C65B97 /* BarView.swift */,
+			);
+			path = "Process View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F9D2F82638B0C500C65B97 /* BarView.swift in Sources */,
 				A616B28B2617C27D005F2A45 /* ProcessView.swift in Sources */,
 				A646877C2637406300FE14CE /* ProcessViewModel.swift in Sources */,
 				A64687782637405C00FE14CE /* Process.swift in Sources */,
