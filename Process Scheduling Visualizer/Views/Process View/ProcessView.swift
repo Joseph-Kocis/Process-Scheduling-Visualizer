@@ -40,6 +40,7 @@ struct ProcessView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .keyboardShortcut("t", modifiers: .command)
                     Button {
                         processViewModel.generate()
                     } label: {

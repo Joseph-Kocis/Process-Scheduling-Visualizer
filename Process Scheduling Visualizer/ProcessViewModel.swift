@@ -8,7 +8,7 @@
 import SwiftUI
 
 class ProcessViewModel: ObservableObject {
-    @Published var allProcess: [Process] = []
+    @Published var allProcess: [Process] = [Process(arrivalTime: 0, duration: 10, priority: 0)]
     @Published var selectedAlgorithm: SchedulingAlgorithms = .firstComeFirstServed
     @Published var scheduledProcesses: [Process] = []
     
@@ -18,6 +18,17 @@ class ProcessViewModel: ObservableObject {
             newProcess.color = Color(.random)
         }
         allProcess.append(newProcess)
+    }
+    
+    func updateProcess(id: String, arrivalTime: Int, duration: Int, priority: Int) {
+        for (index, process) in allProcess.enumerated() {
+            if process.id.uuidString == id {
+                allProcess[index].arrivalTime = arrivalTime
+                allProcess[index].duration = duration
+                allProcess[index].priority = priority
+                break
+            }
+        }
     }
     
     func generate() {

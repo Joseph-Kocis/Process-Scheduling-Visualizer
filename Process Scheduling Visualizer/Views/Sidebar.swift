@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Sidebar: View {
     @ObservedObject var processViewModel: ProcessViewModel
+    @State var editingProcess: Process?
     
     var body: some View {
         if processViewModel.allProcess.isEmpty {
@@ -39,8 +40,16 @@ struct Sidebar: View {
                         .padding(.vertical, 5)
                     }
                     .padding(.horizontal)
+                    .contextMenu {
+                        Button("Edit") {
+                            editingProcess = process
+                        }
+                    }
                 }
                 Spacer()
+            }
+            .sheet(item: $editingProcess) { process in
+                EditProcessView(process, processViewModel: processViewModel)
             }
         }
     }
