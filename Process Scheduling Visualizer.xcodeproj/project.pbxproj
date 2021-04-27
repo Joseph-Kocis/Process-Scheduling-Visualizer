@@ -8,19 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		A616B2892617C27D005F2A45 /* Process_Scheduling_VisualizerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A616B2882617C27D005F2A45 /* Process_Scheduling_VisualizerApp.swift */; };
-		A616B28B2617C27D005F2A45 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A616B28A2617C27D005F2A45 /* ContentView.swift */; };
+		A616B28B2617C27D005F2A45 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A616B28A2617C27D005F2A45 /* ProcessView.swift */; };
 		A616B28D2617C27E005F2A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A616B28C2617C27E005F2A45 /* Assets.xcassets */; };
 		A616B2902617C27E005F2A45 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A616B28F2617C27E005F2A45 /* Preview Assets.xcassets */; };
+		A64687722637402D00FE14CE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64687712637402D00FE14CE /* Sidebar.swift */; };
+		A64687752637404900FE14CE /* CGColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64687742637404900FE14CE /* CGColor+Extension.swift */; };
+		A64687782637405C00FE14CE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64687772637405C00FE14CE /* Process.swift */; };
+		A646877C2637406300FE14CE /* ProcessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A646877B2637406300FE14CE /* ProcessViewModel.swift */; };
+		A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2EC2638987800C65B97 /* AddProcessView.swift */; };
+		A6F9D2F42638A7DA00C65B97 /* SchedulingAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A616B2852617C27D005F2A45 /* Process Scheduling Visualizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Process Scheduling Visualizer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A616B2882617C27D005F2A45 /* Process_Scheduling_VisualizerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process_Scheduling_VisualizerApp.swift; sourceTree = "<group>"; };
-		A616B28A2617C27D005F2A45 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A616B28A2617C27D005F2A45 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
 		A616B28C2617C27E005F2A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A616B28F2617C27E005F2A45 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A616B2912617C27E005F2A45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A616B2922617C27E005F2A45 /* Process_Scheduling_Visualizer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Process_Scheduling_Visualizer.entitlements; sourceTree = "<group>"; };
+		A64687712637402D00FE14CE /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		A64687742637404900FE14CE /* CGColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+Extension.swift"; sourceTree = "<group>"; };
+		A64687772637405C00FE14CE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		A646877B2637406300FE14CE /* ProcessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewModel.swift; sourceTree = "<group>"; };
+		A6F9D2EC2638987800C65B97 /* AddProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcessView.swift; sourceTree = "<group>"; };
+		A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingAlgorithms.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				A616B2882617C27D005F2A45 /* Process_Scheduling_VisualizerApp.swift */,
-				A616B28A2617C27D005F2A45 /* ContentView.swift */,
+				A64687772637405C00FE14CE /* Process.swift */,
+				A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */,
+				A646877B2637406300FE14CE /* ProcessViewModel.swift */,
+				A646877E2637407F00FE14CE /* Views */,
+				A64687742637404900FE14CE /* CGColor+Extension.swift */,
 				A616B28C2617C27E005F2A45 /* Assets.xcassets */,
 				A616B2912617C27E005F2A45 /* Info.plist */,
 				A616B2922617C27E005F2A45 /* Process_Scheduling_Visualizer.entitlements */,
@@ -69,6 +85,16 @@
 				A616B28F2617C27E005F2A45 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A646877E2637407F00FE14CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A616B28A2617C27D005F2A45 /* ProcessView.swift */,
+				A64687712637402D00FE14CE /* Sidebar.swift */,
+				A6F9D2EC2638987800C65B97 /* AddProcessView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A616B28B2617C27D005F2A45 /* ContentView.swift in Sources */,
+				A616B28B2617C27D005F2A45 /* ProcessView.swift in Sources */,
+				A646877C2637406300FE14CE /* ProcessViewModel.swift in Sources */,
+				A64687782637405C00FE14CE /* Process.swift in Sources */,
+				A64687722637402D00FE14CE /* Sidebar.swift in Sources */,
 				A616B2892617C27D005F2A45 /* Process_Scheduling_VisualizerApp.swift in Sources */,
+				A6F9D2F42638A7DA00C65B97 /* SchedulingAlgorithms.swift in Sources */,
+				A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */,
+				A64687752637404900FE14CE /* CGColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

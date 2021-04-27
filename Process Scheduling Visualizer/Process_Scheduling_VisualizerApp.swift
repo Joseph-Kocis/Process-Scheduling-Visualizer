@@ -11,7 +11,7 @@ import SwiftUI
 struct Process_Scheduling_VisualizerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProcessView()
         }
     }
 }
