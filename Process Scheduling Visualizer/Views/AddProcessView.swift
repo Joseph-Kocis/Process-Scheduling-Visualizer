@@ -10,6 +10,8 @@ import SwiftUI
 struct AddProcessView: View {
     @ObservedObject var processViewModel: ProcessViewModel
     @Environment(\.presentationMode) var presentationMode
+    
+    @State var showInvalidInputAlert = false
     @State var arrivalTime = ""
     @State var duration = ""
     @State var priority = ""
@@ -51,19 +53,26 @@ struct AddProcessView: View {
                     if addProcess() {
                         presentationMode.wrappedValue.dismiss()
                     } else {
-                        print("Cannot add - invalid input")
+                        showInvalidInputAlert = true
                     }
                 }
             }
         }
         .frame(width: 300, height: 200)
         .padding()
+        .alert(isPresented: $showInvalidInputAlert) {
+            Alert(
+                title: Text("Invalid Input"),
+                message: Text("All values must be positive integers."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
     
     func addProcess() -> Bool {
         if let arrivalTime = Int(arrivalTime),
            let duration = Int(duration),
-           arrivalTime > 0,
+           arrivalTime >= 0,
            duration > 0 {
             if processViewModel.selectedAlgorithm == .priority {
                 guard let priority = Int(priority),

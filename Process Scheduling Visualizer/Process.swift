@@ -9,8 +9,8 @@ import SwiftUI
 
 struct Process: Identifiable, Hashable {
     let id = UUID()
-    let color = Color(.random)
-    let priority = 0
+    var color = Color(.random)
     let arrivalTime: Int
     let duration: Int
+    let priority: Int
 }

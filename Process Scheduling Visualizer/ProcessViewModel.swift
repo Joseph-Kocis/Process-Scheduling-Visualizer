@@ -8,11 +8,15 @@
 import SwiftUI
 
 class ProcessViewModel: ObservableObject {
-    @Published var allProcess: [Process] = [Process(arrivalTime: 0, duration: 0), Process(arrivalTime: 0, duration: 0), Process(arrivalTime: 0, duration: 0)]
+    @Published var allProcess: [Process] = []
     @Published var selectedAlgorithm: SchedulingAlgorithms = .firstComeFirstServed
     
     func addProcess(arrivalTime: Int, duration: Int, priority: Int) {
-        
+        var newProcess = Process(arrivalTime: arrivalTime, duration: duration, priority: priority)
+        while (allProcess.contains(where: { $0.color == newProcess.color })) {
+            newProcess.color = Color(.random)
+        }
+        allProcess.append(newProcess)
     }
     
     func generate() {
