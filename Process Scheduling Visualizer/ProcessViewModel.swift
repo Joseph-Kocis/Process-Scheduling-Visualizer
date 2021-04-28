@@ -249,6 +249,57 @@ class ProcessViewModel: ObservableObject {
     }
     
     private func priority() -> [Process] {
-        return []
+        var sortedProcesses: [Process] = []
+        sortedProcesses.append(contentsOf: allProcess)
+        sortedProcesses.sort(by: { first, second in
+            return first.arrivalTime < second.arrivalTime
+        })
+        
+        var currentSecond = 0
+        var scheduledProcesses: [Process] = []
+        while !sortedProcesses.isEmpty {
+            var currentHighestPriorityIndex: Int? = nil
+            for (index, process) in sortedProcesses.enumerated() {
+                if process.arrivalTime <= currentSecond {
+                    if let currentHighestPriority = currentHighestPriorityIndex {
+                        if process.priority > sortedProcesses[currentHighestPriority].priority {
+                            currentHighestPriorityIndex = index
+                        }
+                    } else {
+                        currentHighestPriorityIndex = index
+                    }
+                }
+            }
+            if let currentShortestIndex = currentHighestPriorityIndex {
+                // Run this process entirely
+                let process = sortedProcesses[currentShortestIndex]
+                for _ in 0 ..< process.duration {
+                    scheduledProcesses.append(
+                        Process(
+                            color: process.color,
+                            arrivalTime: process.arrivalTime,
+                            duration: process.duration,
+                            priority: process.priority
+                        )
+                    )
+                    currentSecond += 1
+                }
+                sortedProcesses.remove(at: currentShortestIndex)
+            } else {
+                // Wait this time
+                scheduledProcesses.append(
+                    Process(
+                        color: Color.black,
+                        arrivalTime: currentSecond,
+                        duration: 1,
+                        priority: 0
+                    )
+                )
+                currentSecond += 1
+                
+            }
+        }
+        
+        return scheduledProcesses
     }
 }
