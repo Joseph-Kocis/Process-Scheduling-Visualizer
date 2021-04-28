@@ -16,10 +16,14 @@ struct ProcessView: View {
             Sidebar(processViewModel: processViewModel)
             
             VStack {
-                if processViewModel.scheduledProcesses.isEmpty {
-                    Text("Run Scheduling Algorithm")
+                if processViewModel.loading {
+                    ProgressView()
                 } else {
-                    BarView(processViewModel: processViewModel)
+                    if processViewModel.scheduledProcesses.isEmpty {
+                        Text("Run Scheduling Algorithm")
+                    } else {
+                        BarView(processViewModel: processViewModel)
+                    }
                 }
             }
             .toolbar {

@@ -15,6 +15,7 @@
 		A64687752637404900FE14CE /* CGColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64687742637404900FE14CE /* CGColor+Extension.swift */; };
 		A64687782637405C00FE14CE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64687772637405C00FE14CE /* Process.swift */; };
 		A646877C2637406300FE14CE /* ProcessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A646877B2637406300FE14CE /* ProcessViewModel.swift */; };
+		A65EC7F62639BBE600252809 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EC7F52639BBE600252809 /* RoundedCorner.swift */; };
 		A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2EC2638987800C65B97 /* AddProcessView.swift */; };
 		A6F9D2F42638A7DA00C65B97 /* SchedulingAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */; };
 		A6F9D2F82638B0C500C65B97 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F72638B0C500C65B97 /* BarView.swift */; };
@@ -33,6 +34,7 @@
 		A64687742637404900FE14CE /* CGColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+Extension.swift"; sourceTree = "<group>"; };
 		A64687772637405C00FE14CE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		A646877B2637406300FE14CE /* ProcessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewModel.swift; sourceTree = "<group>"; };
+		A65EC7F52639BBE600252809 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		A6F9D2EC2638987800C65B97 /* AddProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcessView.swift; sourceTree = "<group>"; };
 		A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingAlgorithms.swift; sourceTree = "<group>"; };
 		A6F9D2F72638B0C500C65B97 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
@@ -74,7 +76,8 @@
 				A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */,
 				A646877B2637406300FE14CE /* ProcessViewModel.swift */,
 				A646877E2637407F00FE14CE /* Views */,
-				A64687742637404900FE14CE /* CGColor+Extension.swift */,
+				A65EC7FC2639BC0900252809 /* Styles */,
+				A65EC7FB2639BBF800252809 /* Extensions */,
 				A616B28C2617C27E005F2A45 /* Assets.xcassets */,
 				A616B2912617C27E005F2A45 /* Info.plist */,
 				A616B2922617C27E005F2A45 /* Process_Scheduling_Visualizer.entitlements */,
@@ -100,6 +103,22 @@
 				A6F9D2FA2638B42500C65B97 /* EditProcessView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A65EC7FB2639BBF800252809 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A64687742637404900FE14CE /* CGColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A65EC7FC2639BC0900252809 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				A65EC7F52639BBE600252809 /* RoundedCorner.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		A6F9D2F62638B0BB00C65B97 /* Process View */ = {
@@ -189,6 +208,7 @@
 				A6F9D2FB2638B42500C65B97 /* EditProcessView.swift in Sources */,
 				A6F9D2F42638A7DA00C65B97 /* SchedulingAlgorithms.swift in Sources */,
 				A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */,
+				A65EC7F62639BBE600252809 /* RoundedCorner.swift in Sources */,
 				A64687752637404900FE14CE /* CGColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
