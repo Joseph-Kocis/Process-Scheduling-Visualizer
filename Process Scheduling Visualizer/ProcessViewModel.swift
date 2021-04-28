@@ -58,6 +58,12 @@ class ProcessViewModel: ObservableObject {
         }
     }
     
+    private func calculateStats() {
+        
+    }
+    
+    // MARK: -- Scheduling Algorithms
+    
     private func firstComeFirstServed() -> [Process] {
         var sortedProcesses: [Process] = []
         sortedProcesses.append(contentsOf: allProcess)
@@ -150,7 +156,40 @@ class ProcessViewModel: ObservableObject {
     }
     
     private func roundRobin() -> [Process] {
-        return []
+        var sortedProcesses: [Process] = []
+        sortedProcesses.append(contentsOf: allProcess)
+        sortedProcesses.sort(by: { first, second in
+            return first.arrivalTime < second.arrivalTime
+        })
+        
+        var currentSecond = 0
+        var scheduledProcesses: [Process] = []
+        while !sortedProcesses.isEmpty {
+            // Run one second from everything that can run
+            for (index, process) in sortedProcesses.enumerated() {
+                if process.arrivalTime > currentSecond {
+                    break
+                } else {
+                    // Run this process
+                    let process = sortedProcesses[index]
+                    scheduledProcesses.append(
+                        Process(
+                            color: process.color,
+                            arrivalTime: process.arrivalTime,
+                            duration: process.duration,
+                            priority: process.priority
+                        )
+                    )
+                    currentSecond += 1
+                    sortedProcesses[index].duration -= 1
+                    if sortedProcesses[index].duration <= 0 {
+                        sortedProcesses.remove(at: index)
+                    }
+                }
+            }
+        }
+        
+        return scheduledProcesses
     }
     
     private func shortestRemainingTimeFirst() -> [Process] {
@@ -211,9 +250,5 @@ class ProcessViewModel: ObservableObject {
     
     private func priority() -> [Process] {
         return []
-    }
-    
-    private func calculateStats() {
-        
     }
 }
