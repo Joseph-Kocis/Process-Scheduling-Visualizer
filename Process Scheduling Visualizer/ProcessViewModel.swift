@@ -19,6 +19,7 @@ class ProcessViewModel: ObservableObject {
             newProcess.color = Color(.random)
         }
         allProcess.append(newProcess)
+        generate()
     }
     
     func updateProcess(id: String, arrivalTime: Int, duration: Int, priority: Int) {
@@ -30,6 +31,7 @@ class ProcessViewModel: ObservableObject {
                 break
             }
         }
+        generate()
     }
     
     func deleteProcess(withId id: String) {
@@ -39,13 +41,13 @@ class ProcessViewModel: ObservableObject {
                 break
             }
         }
+        generate()
     }
     
     func generate() {
         loading = true
         scheduledProcesses = []
         DispatchQueue.global(qos: .userInitiated).async { [self] in
-            sleep(2)
             var scheduledProcesses: [Process]
             switch selectedAlgorithm {
                 case .firstComeFirstServed:

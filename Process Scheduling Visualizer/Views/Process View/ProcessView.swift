@@ -32,6 +32,7 @@ struct ProcessView: View {
                         ForEach(SchedulingAlgorithms.allCases, id: \.self) { algorithm in
                             Button(algorithm.rawValue) {
                                 processViewModel.selectedAlgorithm = algorithm
+                                processViewModel.generate()
                             }
                         }
                     } label: {
@@ -56,6 +57,9 @@ struct ProcessView: View {
             .sheet(isPresented: $showAddProcessView) {
                 AddProcessView(processViewModel: processViewModel)
             }
+        }
+        .onAppear {
+            processViewModel.generate()
         }
     }
 }
