@@ -44,6 +44,9 @@ struct Sidebar: View {
                         Button("Edit") {
                             editingProcess = process
                         }
+                        Button("Delete") {
+                            processViewModel.deleteProcess(withId: process.id.uuidString)
+                        }
                     }
                 }
                 Spacer()

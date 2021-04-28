@@ -32,6 +32,15 @@ class ProcessViewModel: ObservableObject {
         }
     }
     
+    func deleteProcess(withId id: String) {
+        for (index, process) in allProcess.enumerated() {
+            if process.id.uuidString == id {
+                allProcess.remove(at: index)
+                break
+            }
+        }
+    }
+    
     func generate() {
         loading = true
         scheduledProcesses = []
@@ -148,7 +157,6 @@ class ProcessViewModel: ObservableObject {
                     )
                 )
                 currentSecond += 1
-                
             }
         }
         
@@ -241,7 +249,6 @@ class ProcessViewModel: ObservableObject {
                     )
                 )
                 currentSecond += 1
-                
             }
         }
         
@@ -296,7 +303,6 @@ class ProcessViewModel: ObservableObject {
                     )
                 )
                 currentSecond += 1
-                
             }
         }
         
