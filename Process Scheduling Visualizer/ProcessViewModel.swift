@@ -43,8 +43,6 @@ class ProcessViewModel: ObservableObject {
                     scheduledProcesses = firstComeFirstServed()
                 case .shortestJobFirst:
                     scheduledProcesses = shortestJobFirst()
-                case .shortestTimeToCompletionFirst:
-                    scheduledProcesses = shortestTimeToCompletionFirst()
                 case .roundRobin:
                     scheduledProcesses = roundRobin()
                 case .shortestRemaingTimeFirst:
@@ -109,9 +107,10 @@ class ProcessViewModel: ObservableObject {
             var currentShortestIndex: Int? = nil
             for (index, process) in sortedProcesses.enumerated() {
                 if process.arrivalTime <= currentSecond {
-                    if let currentShortest = currentShortestIndex,
-                       process.duration < sortedProcesses[currentShortest].duration {
-                        currentShortestIndex = index
+                    if let currentShortest = currentShortestIndex {
+                        if process.duration < sortedProcesses[currentShortest].duration {
+                            currentShortestIndex = index
+                        }
                     } else {
                         currentShortestIndex = index
                     }
@@ -150,16 +149,64 @@ class ProcessViewModel: ObservableObject {
         return scheduledProcesses
     }
     
-    private func shortestTimeToCompletionFirst() -> [Process] {
-        return []
-    }
-    
     private func roundRobin() -> [Process] {
         return []
     }
     
     private func shortestRemainingTimeFirst() -> [Process] {
-        return []
+        var sortedProcesses: [Process] = []
+        sortedProcesses.append(contentsOf: allProcess)
+        sortedProcesses.sort(by: { first, second in
+            return first.arrivalTime < second.arrivalTime
+        })
+        
+        var currentSecond = 0
+        var scheduledProcesses: [Process] = []
+        while !sortedProcesses.isEmpty {
+            var currentShortestIndex: Int? = nil
+            for (index, process) in sortedProcesses.enumerated() {
+                if process.arrivalTime <= currentSecond {
+                    if let currentShortest = currentShortestIndex {
+                        if process.duration < sortedProcesses[currentShortest].duration {
+                            currentShortestIndex = index
+                        }
+                    } else {
+                        currentShortestIndex = index
+                    }
+                }
+            }
+            if let currentShortestIndex = currentShortestIndex {
+                // Run this process
+                let process = sortedProcesses[currentShortestIndex]
+                scheduledProcesses.append(
+                    Process(
+                        color: process.color,
+                        arrivalTime: process.arrivalTime,
+                        duration: process.duration,
+                        priority: process.priority
+                    )
+                )
+                currentSecond += 1
+                sortedProcesses[currentShortestIndex].duration -= 1
+                if sortedProcesses[currentShortestIndex].duration <= 0 {
+                    sortedProcesses.remove(at: currentShortestIndex)
+                }
+            } else {
+                // Wait this time
+                scheduledProcesses.append(
+                    Process(
+                        color: Color.black,
+                        arrivalTime: currentSecond,
+                        duration: 1,
+                        priority: 0
+                    )
+                )
+                currentSecond += 1
+                
+            }
+        }
+        
+        return scheduledProcesses
     }
     
     private func priority() -> [Process] {
