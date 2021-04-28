@@ -43,6 +43,8 @@ class ProcessViewModel: ObservableObject {
                     scheduledProcesses = firstComeFirstServed()
                 case .shortestJobFirst:
                     scheduledProcesses = shortestJobFirst()
+                case .shortestTimeToCompletionFirst:
+                    scheduledProcesses = shortestTimeToCompletionFirst()
                 case .roundRobin:
                     scheduledProcesses = roundRobin()
                 case .shortestRemaingTimeFirst:
@@ -65,7 +67,6 @@ class ProcessViewModel: ObservableObject {
             return first.arrivalTime < second.arrivalTime
         })
         
-        // Need to handle cases where there is no process running
         var currentSecond = 0
         var scheduledProcesses: [Process] = []
         for process in sortedProcesses {
@@ -95,7 +96,61 @@ class ProcessViewModel: ObservableObject {
         return scheduledProcesses
     }
     
-    private func shortestJobFirst()  -> [Process]{
+    private func shortestJobFirst()  -> [Process] {
+        var sortedProcesses: [Process] = []
+        sortedProcesses.append(contentsOf: allProcess)
+        sortedProcesses.sort(by: { first, second in
+            return first.arrivalTime < second.arrivalTime
+        })
+        
+        var currentSecond = 0
+        var scheduledProcesses: [Process] = []
+        while !sortedProcesses.isEmpty {
+            var currentShortestIndex: Int? = nil
+            for (index, process) in sortedProcesses.enumerated() {
+                if process.arrivalTime <= currentSecond {
+                    if let currentShortest = currentShortestIndex,
+                       process.duration < sortedProcesses[currentShortest].duration {
+                        currentShortestIndex = index
+                    } else {
+                        currentShortestIndex = index
+                    }
+                }
+            }
+            if let currentShortestIndex = currentShortestIndex {
+                // Run this process entirely
+                let process = sortedProcesses[currentShortestIndex]
+                for _ in 0 ..< process.duration {
+                    scheduledProcesses.append(
+                        Process(
+                            color: process.color,
+                            arrivalTime: process.arrivalTime,
+                            duration: process.duration,
+                            priority: process.priority
+                        )
+                    )
+                    currentSecond += 1
+                }
+                sortedProcesses.remove(at: currentShortestIndex)
+            } else {
+                // Wait this time
+                scheduledProcesses.append(
+                    Process(
+                        color: Color.black,
+                        arrivalTime: currentSecond,
+                        duration: 1,
+                        priority: 0
+                    )
+                )
+                currentSecond += 1
+                
+            }
+        }
+        
+        return scheduledProcesses
+    }
+    
+    private func shortestTimeToCompletionFirst() -> [Process] {
         return []
     }
     
