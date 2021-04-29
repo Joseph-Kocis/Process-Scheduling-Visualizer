@@ -15,17 +15,38 @@ struct ProcessView: View {
         NavigationView {
             Sidebar(processViewModel: processViewModel)
             
-            VStack {
-                if processViewModel.loading {
-                    ProgressView()
-                } else {
-                    if processViewModel.scheduledProcesses.isEmpty {
-                        Text("Run Scheduling Algorithm")
+            ScrollView {
+                VStack {
+                    Spacer()
+                    if processViewModel.loading {
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                            Spacer()
+                        }
                     } else {
-                        BarView(processViewModel: processViewModel)
+                        if processViewModel.scheduledProcesses.isEmpty {
+                            Text("Run Scheduling Algorithm")
+                        } else {
+                            VStack(spacing: 25) {
+                                if processViewModel.scheduledProcesses.count > 20 {
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        BarView(processViewModel: processViewModel)
+                                            .padding(.top, 50)
+                                    }
+                                    .frame(minWidth: 800, maxWidth: .infinity)
+                                } else {
+                                    BarView(processViewModel: processViewModel)
+                                        .padding(.top, 50)
+                                }
+                                InformationView(processViewModel: processViewModel)
+                            }
+                        }
                     }
+                    Spacer()
                 }
             }
+            .background(Color(NSColor.controlBackgroundColor).ignoresSafeArea())
             .toolbar {
                 ToolbarItemGroup(placement: ToolbarItemPlacement.status) {
                     Menu {

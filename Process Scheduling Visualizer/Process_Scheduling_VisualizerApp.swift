@@ -12,6 +12,7 @@ struct Process_Scheduling_VisualizerApp: App {
     var body: some Scene {
         WindowGroup {
             ProcessView()
+                .frame(minWidth: 800, minHeight: 200)
         }
     }
 }

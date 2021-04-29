@@ -8,7 +8,7 @@
 import SwiftUI
 
 class ProcessViewModel: ObservableObject {
-    @Published var allProcess: [Process] = [Process(arrivalTime: 0, duration: 10, priority: 0), Process(arrivalTime: 15, duration: 5, priority: 0)]
+    @Published var allProcess: [Process] = [Process(arrivalTime: 0, duration: 10, priority: 0), Process(arrivalTime: 15, duration: 5, priority: 0), Process(arrivalTime: 0, duration: 10, priority: 0)]
     @Published var selectedAlgorithm: SchedulingAlgorithms = .firstComeFirstServed
     @Published var scheduledProcesses: [Process] = []
     @Published var averageWaitingTime = 0
@@ -218,11 +218,15 @@ class ProcessViewModel: ObservableObject {
         var scheduledProcesses: [Process] = []
         while !sortedProcesses.isEmpty {
             // Run one second from everything that can run
-            for (index, process) in sortedProcesses.enumerated() {
+            var hasRun = false
+            var index = sortedProcesses.startIndex
+            while index < sortedProcesses.endIndex {
+                let process = sortedProcesses[index]
                 if process.arrivalTime > currentSecond {
                     break
                 } else {
                     // Run this process
+                    hasRun = true
                     let process = sortedProcesses[index]
                     scheduledProcesses.append(
                         Process(
@@ -236,8 +240,22 @@ class ProcessViewModel: ObservableObject {
                     sortedProcesses[index].duration -= 1
                     if sortedProcesses[index].duration <= 0 {
                         sortedProcesses.remove(at: index)
+                        index -= 1
                     }
                 }
+                index += 1
+            }
+            if !hasRun {
+                // Wait this time
+                scheduledProcesses.append(
+                    Process(
+                        color: Color.black,
+                        arrivalTime: currentSecond,
+                        duration: 1,
+                        priority: 0
+                    )
+                )
+                currentSecond += 1
             }
         }
         

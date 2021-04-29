@@ -19,21 +19,25 @@ struct BarView: View {
                             .foregroundColor(.clear)
                             .border(Color.black, width: 1)
                             .frame(height: 20)
+                            .frame(minWidth: 40, maxWidth: .infinity)
                     } else if process == processViewModel.scheduledProcesses.first {
                         Rectangle()
                             .foregroundColor(.clear)
                             .background(RoundedCorners(color: process.color, tl: 10, tr: 0, bl: 10, br: 0))
                             .frame(height: 20)
+                            .frame(minWidth: 40, maxWidth: .infinity)
                     } else if process == processViewModel.scheduledProcesses.last {
                         Rectangle()
                             .foregroundColor(.clear)
                             .background(RoundedCorners(color: process.color, tl: 0, tr: 10, bl: 0, br: 10))
                             .frame(height: 20)
+                            .frame(minWidth: 40, maxWidth: .infinity)
                     } else {
                         Rectangle()
                             .foregroundColor(.clear)
                             .background(RoundedCorners(color: process.color, tl: 0, tr: 0, bl: 0, br: 0))
                             .frame(height: 20)
+                            .frame(minWidth: 40, maxWidth: .infinity)
                     }
                     Text("\(index)")
                 }
