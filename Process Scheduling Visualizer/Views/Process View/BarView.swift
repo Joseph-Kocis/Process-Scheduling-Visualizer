@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+struct SelectedIndex: Identifiable {
+    let id = UUID()
+    let index: Int
+}
+
 struct BarView: View {
     @ObservedObject var processViewModel: ProcessViewModel
+    @State var selectedTime: SelectedIndex?
     
     var body: some View {
         HStack(spacing: 2) {
@@ -41,8 +47,16 @@ struct BarView: View {
                     }
                     Text("\(index)")
                 }
+                .contextMenu {
+                    Button("Show Detail") {
+                        selectedTime = SelectedIndex(index: index)
+                    }
+                }
             }
         }
         .padding(.horizontal)
+        .sheet(item: $selectedTime) { time in
+            TimeDetailView(processViewModel: processViewModel, index: time.index)
+        }
     }
 }

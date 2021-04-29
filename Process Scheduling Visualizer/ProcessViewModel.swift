@@ -61,6 +61,15 @@ class ProcessViewModel: ObservableObject {
         generate()
     }
     
+    func scheduledProcesses(upTo index: Int) -> [Process] {
+        var scheduledProcessesSubset: [Process] = []
+        scheduledProcessesSubset.append(contentsOf: scheduledProcesses)
+        if scheduledProcessesSubset.endIndex - index > 0 {
+            scheduledProcessesSubset.removeLast(scheduledProcessesSubset.endIndex - index)
+        }
+        return scheduledProcessesSubset
+    }
+    
     func generate() {
         loading = true
         self.allProcess.sort(by: { first, second in
@@ -87,6 +96,58 @@ class ProcessViewModel: ObservableObject {
                 loading = false
             }
         }
+    }
+    
+    func calculateStats(forIndex time: Int) -> [Process] {
+        var calculatedProcessStats: [Process] = []
+        
+        for process in allProcess {
+            // If the process has arrived
+            if process.arrivalTime <= time {
+                // Calculate waiting time
+                var waitingTime = 0
+                for currentIndex in process.arrivalTime ..< time+1 {
+                    // If the process is available at this index
+                    if process.processInformation!.completionTime > currentIndex {
+                        // If the process is not running
+                        if scheduledProcesses[currentIndex].color != process.color {
+                            waitingTime += 1
+                        }
+                    }
+                }
+                // Calcaulte duration
+                var remaingDuration = process.duration
+                for currentIndex in process.arrivalTime ..< time+1 {
+                    // If the process is running
+                    if scheduledProcesses[currentIndex].color == process.color {
+                        remaingDuration -= 1
+                    }
+                }
+                
+                // Completion Time
+                let completionTime = remaingDuration == 0 ? process.processInformation!.completionTime : -1
+                // Turn Around Time
+                let turnAroundTime = remaingDuration == 0 ? process.processInformation!.turnAroundTime : -1
+                
+                // Add The Process
+                calculatedProcessStats.append(
+                    Process(
+                        color: process.color,
+                        arrivalTime: process.arrivalTime,
+                        duration: remaingDuration,
+                        priority: process.priority,
+                        processInformation: ProcessInformation(
+                            arrivalTime: process.arrivalTime,
+                            duration: remaingDuration,
+                            completionTime: completionTime,
+                            turnAroundTime: turnAroundTime,
+                            waitingTime: waitingTime
+                        )
+                    )
+                )
+            }
+        }
+        return calculatedProcessStats
     }
     
     private func calculateStats() {

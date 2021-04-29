@@ -24,6 +24,7 @@ struct ProcessView: View {
                             ProgressView()
                             Spacer()
                         }
+                        .padding(.top, 300)
                     } else {
                         if processViewModel.scheduledProcesses.isEmpty {
                             Text("Run Scheduling Algorithm")

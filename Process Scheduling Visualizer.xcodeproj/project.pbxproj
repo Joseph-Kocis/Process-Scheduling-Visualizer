@@ -17,6 +17,7 @@
 		A64687782637405C00FE14CE /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64687772637405C00FE14CE /* Process.swift */; };
 		A646877C2637406300FE14CE /* ProcessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A646877B2637406300FE14CE /* ProcessViewModel.swift */; };
 		A65EC7F62639BBE600252809 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65EC7F52639BBE600252809 /* RoundedCorner.swift */; };
+		A69C26E1263B4A8900792BBE /* TimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69C26E0263B4A8900792BBE /* TimeDetailView.swift */; };
 		A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2EC2638987800C65B97 /* AddProcessView.swift */; };
 		A6F9D2F42638A7DA00C65B97 /* SchedulingAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */; };
 		A6F9D2F82638B0C500C65B97 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9D2F72638B0C500C65B97 /* BarView.swift */; };
@@ -37,6 +38,7 @@
 		A64687772637405C00FE14CE /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		A646877B2637406300FE14CE /* ProcessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessViewModel.swift; sourceTree = "<group>"; };
 		A65EC7F52639BBE600252809 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		A69C26E0263B4A8900792BBE /* TimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDetailView.swift; sourceTree = "<group>"; };
 		A6F9D2EC2638987800C65B97 /* AddProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProcessView.swift; sourceTree = "<group>"; };
 		A6F9D2F32638A7DA00C65B97 /* SchedulingAlgorithms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingAlgorithms.swift; sourceTree = "<group>"; };
 		A6F9D2F72638B0C500C65B97 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				A6F9D2F62638B0BB00C65B97 /* Process View */,
 				A64687712637402D00FE14CE /* Sidebar.swift */,
+				A69C26E0263B4A8900792BBE /* TimeDetailView.swift */,
 				A6F9D2EC2638987800C65B97 /* AddProcessView.swift */,
 				A6F9D2FA2638B42500C65B97 /* EditProcessView.swift */,
 			);
@@ -160,7 +163,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					A616B2842617C27D005F2A45 = {
 						CreatedOnToolsVersion = 12.4;
@@ -213,6 +216,7 @@
 				A6F9D2ED2638987800C65B97 /* AddProcessView.swift in Sources */,
 				A6402940263AF73700FF7DF9 /* InformationView.swift in Sources */,
 				A65EC7F62639BBE600252809 /* RoundedCorner.swift in Sources */,
+				A69C26E1263B4A8900792BBE /* TimeDetailView.swift in Sources */,
 				A64687752637404900FE14CE /* CGColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +345,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Process Scheduling Visualizer/Process_Scheduling_Visualizer.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Process Scheduling Visualizer/Preview Content\"";
@@ -365,6 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Process Scheduling Visualizer/Process_Scheduling_Visualizer.entitlements";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Process Scheduling Visualizer/Preview Content\"";
