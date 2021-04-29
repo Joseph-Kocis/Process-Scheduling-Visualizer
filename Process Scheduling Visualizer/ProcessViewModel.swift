@@ -176,7 +176,7 @@ class ProcessViewModel: ObservableObject {
                 arrivalTime: arrivalTime,
                 duration: duration,
                 completionTime: completionTime,
-                turnAroundTime: turnAroundTime,
+                turnAroundTime: turnAroundTime + 1,
                 waitingTime: waitingTime
             )
         }
