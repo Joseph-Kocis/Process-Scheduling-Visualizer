@@ -73,6 +73,11 @@ struct ProcessView: View {
                         Image(systemName: "arrow.clockwise")
                     }
                     .keyboardShortcut("r", modifiers: .command)
+                    Button {
+                        processViewModel.generateRandomly()
+                    } label: {
+                        Image(systemName: "die.face.6")
+                    }
                 }
             }
             .sheet(isPresented: $showAddProcessView) {

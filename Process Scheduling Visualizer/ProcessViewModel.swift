@@ -15,13 +15,15 @@ class ProcessViewModel: ObservableObject {
     @Published var averageTurnAroundTime = 0
     @Published var loading = false
     
-    func addProcess(arrivalTime: Int, duration: Int, priority: Int) {
+    func addProcess(arrivalTime: Int, duration: Int, priority: Int, updateView: Bool = true) {
         var newProcess = Process(arrivalTime: arrivalTime, duration: duration, priority: priority)
         while (allProcess.contains(where: { $0.color == newProcess.color }) || newProcess.color == .black) {
             newProcess.color = Color(.random)
         }
         allProcess.append(newProcess)
-        generate()
+        if updateView {
+            generate()
+        }
     }
     
     func updateProcess(id: String, arrivalTime: Int, duration: Int, priority: Int) {
@@ -46,8 +48,24 @@ class ProcessViewModel: ObservableObject {
         generate()
     }
     
+    func generateRandomly() {
+        allProcess.removeAll()
+        for _ in 0..<Int.random(in: 5..<50) {
+            addProcess(
+                arrivalTime: Int.random(in: 0..<100),
+                duration: Int.random(in: 5..<15),
+                priority: Int.random(in: 1..<50),
+                updateView: false
+            )
+        }
+        generate()
+    }
+    
     func generate() {
         loading = true
+        self.allProcess.sort(by: { first, second in
+            return first.arrivalTime < second.arrivalTime
+        })
         scheduledProcesses = []
         DispatchQueue.global(qos: .userInitiated).async { [self] in
             var scheduledProcesses: [Process]

@@ -127,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				A616B28A2617C27D005F2A45 /* ProcessView.swift */,
-				A640293F263AF73700FF7DF9 /* InformationView.swift */,
 				A6F9D2F72638B0C500C65B97 /* BarView.swift */,
+				A640293F263AF73700FF7DF9 /* InformationView.swift */,
 			);
 			path = "Process View";
 			sourceTree = "<group>";
