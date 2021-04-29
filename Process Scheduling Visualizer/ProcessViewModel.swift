@@ -11,6 +11,8 @@ class ProcessViewModel: ObservableObject {
     @Published var allProcess: [Process] = [Process(arrivalTime: 0, duration: 10, priority: 0), Process(arrivalTime: 15, duration: 5, priority: 0)]
     @Published var selectedAlgorithm: SchedulingAlgorithms = .firstComeFirstServed
     @Published var scheduledProcesses: [Process] = []
+    @Published var averageWaitingTime = 0
+    @Published var averageTurnAroundTime = 0
     @Published var loading = false
     
     func addProcess(arrivalTime: Int, duration: Int, priority: Int) {
@@ -70,7 +72,47 @@ class ProcessViewModel: ObservableObject {
     }
     
     private func calculateStats() {
+        // Calculate the information for each process
+        for (index, process) in allProcess.enumerated() {
+            let arrivalTime = process.arrivalTime
+            let duration = process.duration
+            var completionTime = 0
+            var turnAroundTime = 0
+            var waitingTime = 0
+            
+            for (foundIndex, foundProcess) in scheduledProcesses.enumerated() {
+                if foundProcess.color == process.color {
+                    completionTime = foundIndex
+                }
+            }
+            turnAroundTime = completionTime - arrivalTime
+            
+            for foundIndex in arrivalTime ..< completionTime {
+                if scheduledProcesses[foundIndex].color != process.color {
+                    waitingTime += 1
+                }
+            }
+            
+            allProcess[index].processInformation = ProcessInformation(
+                arrivalTime: arrivalTime,
+                duration: duration,
+                completionTime: completionTime,
+                turnAroundTime: turnAroundTime,
+                waitingTime: waitingTime
+            )
+        }
         
+        // Calculate the average waiting time and average turnaround time
+        var averageWaitingTime = 0
+        var averageTurnaroundTime = 0
+        for process in allProcess {
+            averageWaitingTime += process.processInformation?.waitingTime ?? 0
+            averageTurnaroundTime += process.processInformation?.turnAroundTime ?? 0
+        }
+        averageWaitingTime /= allProcess.count
+        averageTurnaroundTime /= allProcess.count
+        self.averageWaitingTime = averageWaitingTime
+        self.averageTurnAroundTime = averageTurnaroundTime
     }
     
     // MARK: -- Scheduling Algorithms

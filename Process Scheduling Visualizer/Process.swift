@@ -13,4 +13,13 @@ struct Process: Identifiable, Hashable {
     var arrivalTime: Int
     var duration: Int
     var priority: Int
+    var processInformation: ProcessInformation? = nil
+}
+
+struct ProcessInformation: Equatable, Hashable {
+    var arrivalTime: Int
+    var duration: Int
+    var completionTime: Int
+    var turnAroundTime: Int
+    var waitingTime: Int
 }
