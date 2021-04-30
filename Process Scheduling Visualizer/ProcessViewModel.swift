@@ -188,8 +188,10 @@ class ProcessViewModel: ObservableObject {
             averageWaitingTime += process.processInformation?.waitingTime ?? 0
             averageTurnaroundTime += process.processInformation?.turnAroundTime ?? 0
         }
-        averageWaitingTime /= allProcess.count
-        averageTurnaroundTime /= allProcess.count
+        if allProcess.count > 0 {
+            averageWaitingTime /= allProcess.count
+            averageTurnaroundTime /= allProcess.count
+        }
         self.averageWaitingTime = averageWaitingTime
         self.averageTurnAroundTime = averageTurnaroundTime
     }

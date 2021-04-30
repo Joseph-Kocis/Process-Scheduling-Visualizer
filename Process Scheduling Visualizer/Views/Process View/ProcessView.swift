@@ -27,7 +27,12 @@ struct ProcessView: View {
                         .padding(.top, 300)
                     } else {
                         if processViewModel.scheduledProcesses.isEmpty {
-                            Text("Run Scheduling Algorithm")
+                            HStack {
+                                Spacer()
+                                Text("Run Scheduling Algorithm")
+                                Spacer()
+                            }
+                            .padding(.top, 300)
                         } else {
                             VStack(spacing: 25) {
                                 if processViewModel.scheduledProcesses.count > 20 {
